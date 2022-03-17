@@ -1,0 +1,14 @@
+/.build
+/.vscode
+CMakeLists.txt.user
+/QtCreatorDeployment.txt
+/build
+/out
+/LuboEngine/zegolog
+/Library/websocketpp/include/websocketpp
+__pycache__/
+/Misc/Misc/CMakeVersion.h
+/cmake-build*
+.idea
+*.autosave
+/bin
