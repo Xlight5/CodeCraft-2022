@@ -1,5 +1,8 @@
 #include <iostream>
+
+#include "log/Logger.h"
+
 int main() {
-    std::cout << "Hello world!"<<std::endl;
+    Logger::Instance().SetMode(LOG_CONSLOE);
 	return 0;
 }

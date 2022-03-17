@@ -23,6 +23,5 @@ endif ()
 SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb -std=c++11")
 SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall -std=c++11")
 
-message("这是什么呢" + ${DIR_SRCS})
 # 指定生成目标
 add_executable(CodeCraft-2022 ${DIR_SRCS})
