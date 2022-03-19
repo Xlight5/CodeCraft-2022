@@ -22,11 +22,24 @@ static std::string GetTimeStr()
     }
 }
 
+static std::string GetFileName(const std::string& fileName)
+{
+    std::string res = fileName;
+    size_t pos = fileName.rfind('/');
+    if (pos != std::string::npos)
+    {
+        pos += 1;
+        res = res.substr(pos, res.size()-pos);
+    }
+    return res;
+}
+
 /**
  * @brief 日志类型
  */
 enum LogMode
 {
+    LOG_NONE    = 0x00,    // 无
     LOG_CONSLOE = 0x01,    // 控制台
     LOG_FILE    = 0x02     // 文件
 };
@@ -46,7 +59,7 @@ public:
         return _logger;
     }
     
-    void SetMode(LogMode logMode, std::string logFile = "")
+    void SetMode(uint32_t logMode, std::string logFile = "")
     {
         _logMode = logMode;
         if (IsFile() && !logFile.empty())
@@ -86,8 +99,11 @@ private:
         return _logMode & LogMode::LOG_FILE;
     }
 private: 
-    LogMode           _logMode;
+    uint32_t          _logMode = LogMode::LOG_NONE;
     std::ofstream     _logFile;
 };
 
-#define LOG Logger::Instance()<<"\n"<<GetTimeStr()
+#define LOG                      Logger::Instance()<<"\n"<<GetTimeStr()
+#define LOG_INFO                 LOG << "[INFO]"  << " [" << GetFileName(__FILE__) << ":"  << __FUNCTION__ << ":" << __LINE__ << "] "
+#define LOG_WARN                 LOG << "[WARN]"  << " [" << GetFileName(__FILE__) << ":"  << __FUNCTION__ << ":" << __LINE__ << "] "
+#define LOG_ERROR                LOG << "[ERROR]" << " [" << GetFileName(__FILE__) << ":" << __FUNCTION__  << ":" << __LINE__ << "] "
