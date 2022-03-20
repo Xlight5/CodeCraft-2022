@@ -5,9 +5,18 @@
 #include "data/DataReader.h"
 
 int main(int argc, char** argv) {
-    std::string workPath = "/home/haorui/haorui/CodeCraft-2022";
 
+    std::string workPath;
+    if (argc == 2)
+    {
+        workPath = argv[1];
+    }
+
+#ifdef DEBUG
     Logger::Instance().SetMode(LogMode::LOG_CONSLOE | LogMode::LOG_FILE, workPath + "/CodeCraft-2022.log");
+#else
+    Logger::Instance().SetMode(LogMode::LOG_NONE);
+#endif
 
     // 1 - config.ini
     std::shared_ptr<data::Config> config = std::make_shared<data::Config>();
