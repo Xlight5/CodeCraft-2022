@@ -13,3 +13,4 @@ __pycache__/
 *.autosave
 /bin
 *.log
+/src/bin

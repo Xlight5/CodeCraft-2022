@@ -7,10 +7,10 @@ project("CodeCraft-2021")
 # 查找当前目录下的所有源文件
 # 并将名称保存到 DIR_LIB_SRCS 
 
-file(GLOB_RECURSE DIR_SRCS "${PROJECT_SOURCE_DIR}/src/*.cpp" "${PROJECT_SOURCE_DIR}/src/*.h*")
+file(GLOB_RECURSE DIR_SRCS "${PROJECT_SOURCE_DIR}/*.cpp" "${PROJECT_SOURCE_DIR}/*.h*")
 
 # include路径
-include_directories(${PROJECT_SOURCE_DIR}/src)
+include_directories(${PROJECT_SOURCE_DIR})
 
 # 设置可执行文件生成路径
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
